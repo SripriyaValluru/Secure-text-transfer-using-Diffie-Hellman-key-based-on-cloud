@@ -10,18 +10,18 @@ OPEN FILE AND DIRECTORY
 -----------------------------------------------------------------
 '''
 def openfileEnc():
-	filename = tkinter.filedialog.askopenfilename(initialdir = "/home/shreshta/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	filename = tkinter.filedialog.askopenfilename(initialdir = "/home/parth/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	fileToEncrptyEntryUpdate(filename)
 
 def opendirectoryEnc():
-	directory = tkinter.filedialog.askdirectory(initialdir = "/home/shreshta/Desktop",title = "Select directory")
+	directory = tkinter.filedialog.askdirectory(initialdir = "/home/parth/Desktop",title = "Select directory")
 	destinationFolderEncEntryUpdate(directory)
 
 def openfileDec():
-	filename = tkinter.filedialog.askopenfilename(initialdir = "/home/shreshta/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
+	filename = tkinter.filedialog.askopenfilename(initialdir = "/home/parth/Desktop",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")))
 	fileToDecryptEntryUpdate(filename)	
 def opendirectoryDec():
-	directory = tkinter.filedialog.askdirectory(initialdir = "/home/shreshta/Desktop",title = "Select directory")
+	directory = tkinter.filedialog.askdirectory(initialdir = "/home/parth/Desktop",title = "Select directory")
 	destinationFolderDecEntryUpdate(directory)
 '''
 -----------------------------------------------------------------
@@ -36,6 +36,9 @@ def recievefilepage():
 
 def opengithub(event):
 	webbrowser.open_new(r"https://github.com/SripriyaValluru/Secure-text-transfer-using-Diffie-Hellman-key-based-on-cloud")
+
+def openparthlinkedin(event):
+	webbrowser.open_new(r"https://in.linkedin.com/in/parth-trehan")
 
 def openpriyalinkedin(event):
 	webbrowser.open_new(r"https://www.linkedin.com/in/sri-priya-valluru-7509a5152/")
@@ -96,21 +99,21 @@ def main():
 	# Attributes of main dialog box
 	global form
 	form = tkinter.Tk()
-	form.wm_title('Capstone II')
+	form.wm_title('CAPSTONE II')
 	'''
 	-------------------------------------------------------------
 	Form Label Configuration
 	-------------------------------------------------------------
 	'''
-	EncryptStep = LabelFrame(form, text=" 1. File Encryption: ")
+	EncryptStep = LabelFrame(form, text="File Encryption: ")
 	EncryptStep.grid(row=0, columnspan=7, sticky='W', \
 		padx=5, pady=5, ipadx=5, ipady=5)	
 
-	DecryptStep = LabelFrame(form, text=" 2. File Decryption: ")
+	DecryptStep = LabelFrame(form, text="File Decryption: ")
 	DecryptStep.grid(row=2, columnspan=7, sticky='W', \
     	             padx=5, pady=5, ipadx=5, ipady=5)
 
-	Aboutus = LabelFrame(form, text=" About ")
+	Aboutus = LabelFrame(form, text=" About Us ")
 	Aboutus.grid(row=0, column=9, columnspan=2, rowspan=8, \
 		sticky='NS', padx=5, pady=5)
 	'''
@@ -232,14 +235,15 @@ def main():
 	padding.grid(row=3)
 	text2 = Label(Aboutus, text="Contributed by: ")
 	text2.grid(row=4, sticky='S')
-	priyasocial = Label(Aboutus, text="Shreshta")
+	priyasocial = Label(Aboutus, text="  Sravani")
 	priyasocial.bind("<Button-1>",openpriyalinkedin)
 	priyasocial.grid(row=5, sticky='SW',padx = 8)
 	text3 = Label(Aboutus, text="|")
 	text3.grid(row=5)
-	parthsocial = Label(Aboutus, text="Sravani")
+	parthsocial = Label(Aboutus, text="Shreshta")
 	parthsocial.bind("<Button-1>",openparthlinkedin)
 	parthsocial.grid(row=5, sticky='SE',padx = 8)
+    
 
 
 	form.mainloop()
