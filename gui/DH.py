@@ -3,6 +3,7 @@ import ssl
 import binascii
 import os
 
+from numpy import long
 global generator
 global prime
 global key_length
@@ -39,13 +40,13 @@ def generate_public_key(private_key):
 #Secret key = public key ^ private key % q
 def generate_secret(private_key, public_key):
 	#Formula
-	secret = pow(int(public_key), int(private_key), prime)
+	secret = pow(long(public_key), long(private_key), prime)
 	try:
-		secret_bytes = secret.to_bytes(private_key.shared_secret.bit_length() // 8 + 1, byteorder="big")
+		secret_bytes = secret.to_bytes(secret.bit_length() // 8 + 1, byteorder="big")
 	except AttributeError:
 		secret_bytes = str(secret)
 	#Generate hash key using SHA256 
 	key = hashlib.sha256()
-	key.update(bytes(secret_bytes,'utf8'))
+	key.update(bytes(secret_bytes))
 	secretKey = key.hexdigest()
 	return secretKey	

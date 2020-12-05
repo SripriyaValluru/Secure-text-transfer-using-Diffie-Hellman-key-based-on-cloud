@@ -4,7 +4,8 @@ import unicodedata
 import os
 import os.path
 import DH
-import codecs
+import binascii
+from numpy import long
 
 global key
 global prime_
@@ -16,8 +17,8 @@ global prime_
 '''
 def encrypt(filename,directory,public_key,private_key):
 
-	key = DH.generate_secret(int(private_key), int(public_key))
-	str = codecs.encode('hex')
+	key = DH.generate_secret(long(private_key), long(public_key))
+	str = key.encode("utf-8").hex()
 	key = str[0:32]
 	file_obj = open(filename,"r")
 	t = time.time()
@@ -26,7 +27,8 @@ def encrypt(filename,directory,public_key,private_key):
 	#msg2 = ENCDEC.AESCipher(key).encrypt(str)
 	s = time.time()
 	#Exchange this with public key
-	outputFilename = os.path.join(directory,key[16:]+".txt")
+	#outputFilename = os.path.join(directory,key[16:]+".txt")
+	outputFilename = os.path.join(directory,"EncodedFile.txt")
 	file_obj = open(outputFilename,'w')
 	file_obj.write(msg1)
 	#file_obj.write('\n')
@@ -43,8 +45,8 @@ def encrypt(filename,directory,public_key,private_key):
 '''
 def decrypt(filename,directory,public_key,private_key):
 	
-	key = DH.generate_secret(int(private_key), int(public_key))
-	str = codecs.encode('hex')
+	key = DH.generate_secret(long(private_key), long(public_key))
+	str = key.encode("utf-8").hex()
 	key = str[0:32]
 	file_obj = open(filename,"r")
 	msg = file_obj.read()
