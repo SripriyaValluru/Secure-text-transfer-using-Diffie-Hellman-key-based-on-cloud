@@ -1,6 +1,7 @@
-version: "3.8"
+version: '3.8'
 services:
   web:
     build: .
+    command: python web-app/app.py 0.0.0.0:8000
     ports:
-      - "5000:5000"
+     - 8000:8000       
