@@ -1,8 +1,15 @@
-FROM python:3
-WORKDIR /code
-ENV FLASK_RUN_HOST=127.0.0.1
-COPY requirements.txt requirements.txt
+FROM python:3.8
+
+# Create app directory
+WORKDIR /app
+
+# Install app dependencies
+COPY requirements.txt ./
+
 RUN pip install -r requirements.txt
-COPY . .
+
+# Bundle app source
+COPY web-app /app
+
 EXPOSE 5000
-#CMD python web-app/app.py
+CMD [ "python", "app.py" ]
