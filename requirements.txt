@@ -1,6 +1,2 @@
-tkinter
-webbrowser
-pycryptodome
-secretsharing
+flask
 hashlib
-numpy
