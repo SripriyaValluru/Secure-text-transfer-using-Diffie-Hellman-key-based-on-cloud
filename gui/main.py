@@ -235,7 +235,7 @@ def main():
 	padding.grid(row=3)
 	text2 = Label(Aboutus, text="Contributed by: ")
 	text2.grid(row=4, sticky='S')
-	priyasocial = Label(Aboutus, text="  Sra")
+	priyasocial = Label(Aboutus, text="  Srav")
 	priyasocial.bind("<Button-1>",openpriyalinkedin)
 	priyasocial.grid(row=5, sticky='SW',padx = 8)
 	text3 = Label(Aboutus, text="|")
