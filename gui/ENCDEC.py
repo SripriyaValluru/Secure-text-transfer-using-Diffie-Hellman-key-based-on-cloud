@@ -9,9 +9,9 @@ from secretsharing import PlaintextToHexSecretSharer
 from secretsharing import SecretSharer
 
 
-BS = 16
-pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode()
-unpad = lambda s: s[:-ord(s[len(s)-1:])]
+#BS = 16
+#pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode()
+#unpad = lambda s: s[:-ord(s[len(s)-1:])]
 
 #GENERATE A (random hexadecimal number)
 #temporaryKey = binascii.b2a_hex(os.urandom(16))
@@ -55,13 +55,47 @@ def shamirs_join(list,str):
 Method:
 	AES encryption
 '''
-def iv():
+
+class AESCipher(object):
+    BS = 16
+
+    def __init__(self, key):
+        self.key = key
+        self.pad = lambda s: s + (self.BS - len(s) % self.BS) * chr(self.BS - len(s) % self.BS).encode()
+        self.unpad = lambda s: s[:-ord(s[len(s)-1:])]
+
+    @staticmethod
+    def iv():
+        """
+        The initialization vector to use for encryption or decryption.
+        It is ignored for MODE_ECB and MODE_CTR.
+        """
+        return chr(0) * 16
+
+    def encrypt(self, message):
+        """
+        It is assumed that you use Python 3.0+, so plaintext's type must be str type(== unicode).
+        """
+        #message = message.encode()
+        raw = self.pad(message)
+        cipher = AES.new(self.key.encode('utf-8'), AES.MODE_CBC, self.iv().encode('utf-8'))
+        enc = cipher.encrypt(raw)
+        return base64.b64encode(enc).decode('utf-8')
+
+    def decrypt(self, enc):
+        enc = base64.b64decode(enc)
+        cipher = AES.new(self.key.encode('utf-8'), AES.MODE_CBC, self.iv().encode('utf-8'))
+        dec = cipher.decrypt(enc)
+        return self.unpad(dec).decode('utf-8')
+
+
+#def iv():
     """
     The initialization vector to use for encryption or decryption.
     It is ignored for MODE_ECB and MODE_CTR.
     """
-    return chr(0) * 16
-
+ #   return chr(0) * 16
+'''
 class AESCipher(object):
 
     def __init__(self, key):
@@ -75,7 +109,7 @@ class AESCipher(object):
         """
         message = message.encode()
         raw = pad(message)
-        cipher = AES.new(self.key, AES.MODE_CBC, iv())
+        cipher = AES.new(self.key, AES.MODE_CBC, self.iv())
         enc = cipher.encrypt(raw)
         return base64.b64encode(enc).decode('utf-8')
 
@@ -84,3 +118,4 @@ class AESCipher(object):
         cipher = AES.new(self.key, AES.MODE_CBC, iv())
         dec = cipher.decrypt(enc)
         return unpad(dec).decode('utf-8')
+'''
