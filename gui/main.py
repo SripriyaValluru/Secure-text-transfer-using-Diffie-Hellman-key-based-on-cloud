@@ -240,7 +240,7 @@ def main():
 	priyasocial.grid(row=5, sticky='SW',padx = 8)
 	text3 = Label(Aboutus, text="|")
 	text3.grid(row=5)
-	parthsocial = Label(Aboutus, text=" Padmini")
+	parthsocial = Label(Aboutus, text=" Shreshta")
 	parthsocial.bind("<Button-1>",openparthlinkedin)
 	parthsocial.grid(row=5, sticky='SE',padx = 8)
     
