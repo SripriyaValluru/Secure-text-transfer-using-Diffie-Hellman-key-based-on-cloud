@@ -23,9 +23,9 @@ RUN apt-get update -y && \
 
 COPY ./requirements.txt /requirements.txt
 
-RUN mkdir /usr/src/app/
-COPY . /usr/src/app/
-WORKDIR /usr/src/app/
+RUN mkdir /app/
+COPY . /app/
+WORKDIR /app/
 
 #WORKDIR /
 
