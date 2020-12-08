@@ -27,8 +27,8 @@ WORKDIR /
 
 RUN pip3 install -r requirements.txt
 
-COPY . /
+COPY . .
 
 ENTRYPOINT [ "python3" ]
 
-CMD [ "web-app/app.py" ]
+CMD [ "app.py" ]
