@@ -22,6 +22,7 @@ def allowed_file(filename):
 					PAGE REDIRECTS
 -----------------------------------------------------------
 '''
+@app.route('/data')
 def post_upload_redirect():
 	return render_template('post-upload.html')
 
