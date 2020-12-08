@@ -9,7 +9,7 @@ COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 # Bundle app source
-COPY web-app /app
+COPY . /app/web-app
 
 EXPOSE 5000
-CMD [ "python", "app.py" ]
+CMD [ "python", "/web-app/app.py" ]
