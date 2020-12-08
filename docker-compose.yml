@@ -1,18 +1,8 @@
 version: '3.8'
 services:
-  #web:
-    #build: ./web-app 
-    #ports:
-     #- 5000:5000       
-    #volumes:
-     #- .:/code
-
-  api-service:
-      build: ./web-app/
-      volumes: 
-          - ./web-app/:/app/
-      ports: 
-          - 5000:5000
-      environment: 
-          PORT: 5000
-          FLASK_DEBUG: 1
+  web:
+    build: ./web-app 
+    ports:
+     - 5000:5000       
+    volumes:
+     - .:/code
