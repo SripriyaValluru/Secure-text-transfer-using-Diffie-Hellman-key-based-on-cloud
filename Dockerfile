@@ -23,15 +23,11 @@ RUN apt-get update -y && \
 
 COPY ./requirements.txt /requirements.txt
 
-RUN mkdir /app/
-COPY . /app/
-WORKDIR /app/
-
-#WORKDIR /
+WORKDIR /
 
 RUN pip3 install -r requirements.txt
 
-#COPY . .
+COPY . .
 
 ENTRYPOINT [ "python3" ]
 
