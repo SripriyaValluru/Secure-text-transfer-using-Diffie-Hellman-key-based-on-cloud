@@ -1,7 +1,8 @@
 version: '3.8'
 services:
   web:
-    build: .
-    command: python3 /web-app/app.py 
+    build: ./web-app 
     ports:
      - 5000:5000       
+    volumes:
+     - .:/code
