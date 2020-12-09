@@ -55,7 +55,7 @@ This implementation can be explained in two parts
 * stand-alone-application
 * web-application
 
-### standalone-application
+### Standalone-application
 
 ![stand-alone-application](/web-app/static/gui.gif)
 
@@ -63,7 +63,7 @@ This implementation can be explained in two parts
 * The file is encrypted using AES algorithm
 * *Menu* option also helps to toggle the menu to upload and download files</br></br>
 
-### web-application
+### Web-application
 ![web-application](/web-app/static/webapp.png)
 
 
