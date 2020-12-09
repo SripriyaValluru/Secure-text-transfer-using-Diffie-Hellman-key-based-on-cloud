@@ -71,7 +71,7 @@ Once file is encrypted it has to be uploaded on an online directory. Another dir
 
 ### Hosting on AWS
 
-* fork this repository
+* Fork this repository
 * create an amazon EC2 instance.
 * Select and create **Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type**
 * While creating the machine, toggle to menu *Configure Security Group* menu.
@@ -84,7 +84,7 @@ Once file is encrypted it has to be uploaded on an online directory. Another dir
 * In putty, copy the IP in *Host Name(or IP address)*
 * In putty, toggle the SSH>Auth and here, select the *private key* you generated.
 * Click open and voila! The terminal of instance opens
-* -----------------------------------------------------
+-----------------------------------------------------
 * Enter "login as:" ec2-user
 * Enter following command
 * $sudo bash
