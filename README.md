@@ -4,8 +4,7 @@ Security on cloud has been a hot topic. Even the tech giants like google and ama
 
 ## Diffie-Hellman Key Exchange
 
-One of the brute approaches for secure transfer can be that *user A* can encrypt the using a key and later the key could be shared with *user B*. This approach can work up to an extent but it always has a risk of **third-party eavesdroppping**. We needed a system in which two users, without knowing the secret key, can independently generate same key at both ends. This key could later be used to encrypt and decrypt the text. The diffie-hellman key exchange algorithm comes into picture.</br> </br>
-Diffieâ€“Hellman key exchange (DH) is a method of securely exchanging cryptographic keys over a
+Diffie-Hellman key exchange (DH) is a method of securely exchanging cryptographic keys over a
 public channel and was one of the first public-key protocols named after Whitfield Diffie and
 Martin Hellman. DH is one of the earliest practical examples of public key exchange
 implemented within the field of cryptography.</br>
@@ -18,7 +17,7 @@ enables any user of the system to send a message to any other user enciphered in
 only the intended receiver can decipher it. As such, a public key cryptosystem is a multiple access
 cipher. A private conversation can therefore be held between any two individuals regardless of
 whether they have ever communicated before. Each one sends messages to the other enciphered in
-the receiverâ€™s public enciphering key and deciphers the messages he receives using his own secret
+the receiver public enciphering key and deciphers the messages he receives using his own secret
 deciphering key.
 
 ### Working example of Diffie-Hellman 
@@ -38,36 +37,34 @@ deciphering key.
 (public key of Alice ^ Private Key of Bob) mod p
 => (4^3 ) % 23 => 64 % 23 => 18
 
-##### Dependencies
+##### Dependencies and Tools
 ```
-python-flask
-hashlib
-pycrypto
-secretsharing
-tkinter
-webbrowser
+For GUI:
+pip install secretsharing
+pip install tkinter
+pip install pycryptodome
+pip install hashlib
+pip install webbrowser
+
+For Web Application:
+pip install flask
 ```
-## Code Explanation
+## PROJECT
 
 This implementation can be explained in two parts
 * stand-alone-application
 * web-application
 
-### stand-alone-application
+### standalone-application
 
-![stand-alone-application](/dump/images/GUI.PNG)
+![stand-alone-application](/web-app/static/gui.gif)
 
 * This portion deals with encryption and decryption of file
 * The file is encrypted using AES algorithm
 * *Menu* option also helps to toggle the menu to upload and download files</br></br>
 
-**src/stand-alone-application/DH.py**:  This file deals with generating keys using diffie-hellman. It generates three keys: Private Key, Public Key, Secret Key (used for encryption and decryption)</br>
-**src/stand-alone-application/ENCDEC.py**: This file is used for encoding and decoding using AES algorithm.</br>
-**src/stand-alone-application/thrain.py**: This file acts as a mediator and connect the main program with other code files.</br>
-**src/stand-alone-application/main.py**: This file deals with the GUI. It is the main file [yeah, trust me!].</br>
-
 ### web-application
-![web-application](/dump/images/home.png)
+![web-application](/web-app/static/webapp.png)
 
 
 Once file is encrypted it has to be uploaded on an online directory. Another directory is needed where public-key of all the users is stored. Thus, we built an online directory and hosted it on cloud. The unique thing about hosting is that dynamic files are being generated while adding a new user or uploading a text file. Thus, we needed a cloud service which could run the program and incorporate the dynamic files. We tried free services like pivotal and heroku but then amazon AWS came to our rescue.</br>
