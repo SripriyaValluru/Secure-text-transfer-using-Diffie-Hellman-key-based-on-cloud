@@ -13,6 +13,9 @@
 		<!-- Character encoding scheme -->
 		<meta charset="UTF-8"> 
 		<title>Public Key List</title>
+		<link rel = "icon" href =  
+"https://image.flaticon.com/icons/png/512/30/30706.png" 
+        type = "image/x-icon"> 
 		<style type="text/css">
 			@import url('https://fonts.googleapis.com/css?family=Roboto');
 			
@@ -33,7 +36,9 @@ table, td, th {
 	text-align: center;
   }
 
-  
+  td,th{
+	padding:10px;
+}
   table {
 	width: 50%;
 	/*border-collapse: collapse;*/
@@ -250,7 +255,7 @@ $(".navbar-toggler").click(function(){
 	{%if msg != ''%}
 		<h3>{{msg}}</h3>
 	{%else%}
-	<p><b>Download the Public-key from here:</b></p>
+	<h3 style="font-family:'Times New Roman', Times, serif;">Download the Public-key from here:</h3><br>
 		<table>
 			<thead>
 				<tr>
