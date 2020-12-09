@@ -7,12 +7,16 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 		<link href='/static/style.css' rel='stylesheet' type='text/css'>
 		<!-- Character encoding scheme -->
 		<meta charset="UTF-8"> 
 		<title>UPLOAD FILE</title>
+		<link rel = "icon" href =  
+"https://image.flaticon.com/icons/png/512/30/30706.png" 
+        type = "image/x-icon"> 
 		<style type="text/css">
 			@import url('https://fonts.googleapis.com/css?family=Roboto');
 			
@@ -189,10 +193,15 @@ input[type="file"] {
 	color:#FFFFFF;
 	text-align:center;
 	transition: all 0.2s;
+	
+ 
+  	padding: 6px 12px;
+  	cursor: pointer;
 	}
 .custom-file-upload:hover{
 	color:#000000;
 	background-color:#FFFFFF;
+	 
 	}
 @media all and (max-width:30em){
 .custom-file-upload{
@@ -202,6 +211,7 @@ margin:0.4em auto;
 }
 </style>
 <script>
+
 	// ---------Responsive-navbar-active-animation-----------
 function test(){
  var tabsNewAnim = $('#navbarSupportedContent');
@@ -242,6 +252,7 @@ $(".navbar-toggler").click(function(){
  setTimeout(function(){ test(); });
 });
 
+
 </script>
 	</head>
 	<body style="color: white;">
@@ -271,16 +282,61 @@ $(".navbar-toggler").click(function(){
 		<center style="padding: 40px;">
 			<br>
 			<br>
+			<h3 style="font-family: 'Times New Roman', Times, serif; color:red">Make sure that the file has been encrypted using the GUI.</h3><br><br>
 			<form action = "/data" method = "POST" enctype = "multipart/form-data">
 				<!--<input type = "file" name = "file" required>-->
-				<label class="custom-file-upload">
-					<input type="file"/>
+				<input id="file-upload" name="file" type="file" onchange="return fileValidation()" required>
+
+				<label for="file-upload" class="custom-file-upload">
+					<!--<input type="file" name="file" required/>-->
 					<i class="fa fa-cloud-upload"></i> Upload Text File
-				</label>
-				<img src="https://i.gifer.com/7H5F.gif" alt="upload" width="55px" height="55px">
+				</label><br><label style="font-family:'Times New Roman', Times, serif;
+	font-weight:300;
+	font-size: 16px;
+	color:#FFFFFF;" >Extensions allowed: .txt | .doc | .docx | .rtf </label><br>
+				<label id="file-name" style="font-family:'Times New Roman', Times, serif;
+	font-weight:300;
+	font-size: 25px;
+	color:#FFFFFF;" ></label>
+				<script>
+ function fileValidation() { 
+            var fileInput =  
+                document.getElementById('file-upload'); 
+              
+            var filePath = fileInput.value; 
+          
+            // Allowing file type 
+            var allowedExtensions =  
+/(\.doc|\.docx|\.txt|\.rtf)$/i; 
+              
+            if (!allowedExtensions.exec(filePath)) { 
+                alert('Invalid file type'); 
+                fileInput.value = ''; 
+                return false; 
+            }  
+        }				
+
+var input = document.getElementById( 'file-upload' );
+var infoArea = document.getElementById( 'file-name' );
+
+input.addEventListener( 'change', showFileName );
+
+function showFileName( event ) {
+  
+  // the change event gives us the input it occurred in 
+  var input = event.srcElement;
+  
+  // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+  var fileName = input.files[0].name;
+  
+  // use fileName however fits your app best, i.e. add it into a div
+  infoArea.textContent = 'File name: ' + fileName;
+}
+</script>
+				<!--<img src="https://i.gifer.com/7H5F.gif" alt="upload" width="55px" height="55px">-->
 				<br><br><input type = "submit" class="btn btn-info btn-lg" value="SUBMIT">
 				<div class="container" style="font-size:25px"><br><br>
-					<h3 style="font-family: 'Times New Roman', Times, serif;">Select the file you wish to upload to the cloud.<br> Make sure that the file has been encrypted using the standalone application.</h3>
+					<h3 style="font-family: 'Times New Roman', Times, serif;">Select the file you wish to upload to the cloud.<br></h3>
 				</div>
 			</form>
 			<br>
