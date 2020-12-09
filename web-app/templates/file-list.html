@@ -13,6 +13,9 @@
 		<!-- Character encoding scheme -->
 		<meta charset="UTF-8"> 
 		<title>File List</title>
+		<link rel = "icon" href =  
+"https://image.flaticon.com/icons/png/512/30/30706.png" 
+        type = "image/x-icon"> 
 		<style type="text/css">
 			@import url('https://fonts.googleapis.com/css?family=Roboto');
 			
@@ -247,10 +250,11 @@ $(".navbar-toggler").click(function(){
 	{%else%}
 		<h3 style="color: white; padding:30px 30px 20px 30px; font-family:'Times New Roman', Times, serif; ">Uploaded Text Files</h3>
 		<p  style="color:white;font-family:'Times New Roman', Times, serif; font-size: 22px;">Download the file you want to Decrypt:</p>
+		
 		{% for itr in range(length):%}
 			<ol>
 				<li><a style="color:white;font-family:'Times New Roman', Times, serif; font-size: 20px; "  href="retrieve/file/{{list[itr]}}">{{list[itr]}}</a></li>
-			</ol>	
+			</ol>
 		{% endfor%}
 	{%endif%}
 </center>
