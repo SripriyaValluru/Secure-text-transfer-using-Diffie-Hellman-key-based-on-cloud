@@ -293,7 +293,7 @@ $(".navbar-toggler").click(function(){
 				</label><br><label style="font-family:'Times New Roman', Times, serif;
 	font-weight:300;
 	font-size: 16px;
-	color:#FFFFFF;" >Extensions allowed: .txt | .doc | .docx | .rtf </label><br>
+	color:#FFFFFF;" >Extensions allowed: .txt </label><br>
 				<label id="file-name" style="font-family:'Times New Roman', Times, serif;
 	font-weight:300;
 	font-size: 25px;
@@ -307,7 +307,7 @@ $(".navbar-toggler").click(function(){
           
             // Allowing file type 
             var allowedExtensions =  
-/(\.doc|\.docx|\.txt|\.rtf)$/i; 
+/(\.txt)$/i; 
               
             if (!allowedExtensions.exec(filePath)) { 
                 alert('Invalid file type'); 
